@@ -25,12 +25,11 @@ public class DetailActivity extends AppCompatActivity {
             String title = getIntent().getStringExtra("title");
             String content = getIntent().getStringExtra("content");
 
-            TextView tvTitle = findViewById(R.id.tvTitle);
             TextView tvContent = findViewById(R.id.tvContent);
 
-            tvTitle.setText(title);
-            tvContent.setText(content);
+            getSupportActionBar().setTitle(title);
 
+            tvContent.setText(content);
             tvContent.setMovementMethod(new ScrollingMovementMethod());
         }
     }

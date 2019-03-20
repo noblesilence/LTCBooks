@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtTitle"
-        android:text="@string/chapter_1_title_zg"
+        android:text="Title"
         android:fontFamily="@font/zawgyione_font"
         style="@android:style/TextAppearance.Medium"
         android:paddingTop="8dp"

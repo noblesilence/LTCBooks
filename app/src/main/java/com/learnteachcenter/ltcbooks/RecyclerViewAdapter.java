@@ -1,28 +1,22 @@
 package com.learnteachcenter.ltcbooks;
 
 import android.content.Context;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private static final String TAG = "LTC";
 
-    private ArrayList<String> mTitles = new ArrayList<>();
+    private String[] mTitles;
     private OnItemListener mOnItemListener;
     private Context mContext;
 
     public RecyclerViewAdapter(Context context,
-                               ArrayList<String> titles,
+                               String[] titles,
                                OnItemListener onItemListener
                                ) {
         mTitles = titles;
@@ -39,14 +33,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: called at position: " + position);
-
-        holder.txtTitle.setText(mTitles.get(position));
+        holder.txtTitle.setText(mTitles[position]);
     }
 
     @Override
     public int getItemCount(){
-        return mTitles.size();
+        return mTitles.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -15,11 +15,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
     implements RecyclerViewAdapter.OnItemListener
 {
-
-    private static final String TAG = "LTC";
-
-    private ArrayList<String> mTitles = new ArrayList<>();
-    private ArrayList<String> mContents = new ArrayList<>();
+    private String[] mTitles;
+    private String[] mContents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +28,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initChapters(){
-        Log.d(TAG, "initChapters: ");
-
-        mTitles.add(getString(R.string.chapter_1_title_zg));
-        mTitles.add(getString(R.string.chapter_2_title_zg));
-        mTitles.add(getString(R.string.chapter_3_title_zg));
-
-        mContents.add(getString(R.string.chapter_1_content_zg));
-        mContents.add(getString(R.string.chapter_2_content_zg));
-        mContents.add(getString(R.string.chapter_3_content_zg));
-
-        Log.d(TAG, "mTitles size: " + mTitles.size());
+        mTitles = getResources().getStringArray(R.array.chapter_titles);
+        mContents = getResources().getStringArray(R.array.chapter_contents);
     }
 
     private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: ");
-
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(
                 this,
@@ -59,11 +45,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(int position) {
-        Log.d(TAG, "onItemClick: " + position);
-
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("title", mTitles.get(position));
-        intent.putExtra("content", mContents.get(position));
+        intent.putExtra("title", mTitles[position]);
+        intent.putExtra("content", mContents[position]);
         startActivity(intent);
     }
 }
